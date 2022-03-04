@@ -1,0 +1,63 @@
+git init 初始化git
+git add . 此資料夾中要更新的檔案加入 .代表全部
+
+<遠端更新回本機>更新專案必做
+git pull origin main
+
+<創建分支>
+git branch 新分支名稱
+
+<轉換分支>
+git switch 分支名
+git checkout 分支名
+
+
+git branch -a(檢視所有分支包括本地分支和遠端分支)
+git branch -r(檢視遠端分支).
+
+<自己寫程式>
+git add .
+git commit -m "修改內容"
+git push 自己的分支
+pull request
+git merge main weiling 本機端把main和weiling內容合併
+
+git config --global user.name "FIRST_NAME LAST_NAME"
+git config --global user.email "MY_NAME@example.com"
+git config --list
+
+git remote -v
+git remote add origin {github_ip}
+git remote -v
+git push origin master
+
+從github pull origin main的時候 跟本地端有衝突
+錯誤訊息:Please commit your changes or stash them before you merge.
+錯誤訊息:error: Your local changes to the following files would be overwritten by merge:
+
+git stash
+git pull
+git stash pop
+
+
+錯誤排解:
+Merging is not possible because you have unmerged files
+fatal: Exiting because of an unresolved conflict.
+
+
+merge後發現有衝突也做了stash和stash pop後
+先去修改衝突檔案並存檔
+git add .
+git commit -a -m "balabala"
+
+
+PUSH教學
+使用SSH&鑰匙
+解決分支先推上去的問題
+git init
+git commit –m 'first commit'
+git remote add origin xxxx.git
+git push -u origin master
+
+移除自己舊有的remote
+git remote remove origin
