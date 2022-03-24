@@ -61,3 +61,16 @@ git push -u origin master
 
 移除自己舊有的remote
 git remote remove origin
+
+誤傳檔案到遠端, 要清除所有commit內容 <慎用> ref: https://reurl.cc/02NOOk
+git filter-branch --tree-filter "rm -f 檔案名稱"
+若出現"You need to run this command from the toplevel of the working tree." > 換到專案最上層資料夾後~再下指令一次
+刪除之後要把filter-branch的備份點蓋過去, 指令加入-f 強制覆寫filter-branch的備份點
+git filter-branch -f --tree-filter "rm -f 檔案名稱"
+rm .git/refs/heads/main
+git reflog expire --all --expire=now
+git fsck --unreachable
+git gc --prune=now
+git fsck
+git push -f
+中間會需要再跑一次 git add. > git commit 等等~
